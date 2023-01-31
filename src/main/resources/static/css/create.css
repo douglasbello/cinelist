@@ -1,0 +1,64 @@
+body {
+    background: #04a7aa;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: #04a7aa;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    border-radius: 10px;
+    width: 500px;
+    height: 600px;
+    background: #fff;
+}
+.form-control {
+    width: 350px;
+}
+.form-label {
+	padding-top: 10px;
+    padding-left: 0px;
+}
+.mb-3 {
+    padding-top: 0;
+    padding-left: 70px;
+}
+.create-account {
+    font-weight: bold;
+    font-size: 24px;
+    padding-top: 20px;
+    padding-left: 185px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.btn {
+	font-size: 18px;
+    margin-top: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 150px;
+    width: 200px;
+}
+.btn-primary:hover {
+	transition: 0.4s;
+	background-color: rgb(243, 67, 3);
+}
+.sign-in-redirect {
+	font-size: 18px;
+	padding-top: 20px;
+	padding-left: 160px;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.instruction {
+	padding-left: 10px;
+}
+.asteric {
+	color: red;
+}

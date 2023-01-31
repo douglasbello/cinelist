@@ -1,0 +1,58 @@
+body {
+    background: #04a7aa;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: #04a7aa;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    border-radius: 10px;
+    width: 400px;
+    height: 400px;
+    background: #fff;
+}
+.form-control {
+    width: 300px;
+}
+.form-label {
+	padding-top: 10px;
+    padding-left: 5px;
+}
+.mb-3 {
+    padding-top: 0;
+    padding-left: 40px;
+}
+.login {
+    font-weight: bold;
+    font-size: 24px;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+.btn {
+    margin-top: 15px;
+    margin-left: 50px;
+    width: 100px;
+}
+.btn:hover {
+	transition: 0.4s;
+	background-color: rgb(243, 67, 3);
+}
+.sign-up-redirect {
+	margin-left: 50px;
+	padding-top: 10px;
+	padding-bottom: 0px;
+}
+.instruction {
+	margin-top: 20px;
+	padding-top: 20px;
+	margin-left: 0px;
+	padding-left: 0px;
+	font-size: 18px;
+}

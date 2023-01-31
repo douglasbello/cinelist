@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="css/create.css">
+<link th:replace="fragments/fragments :: favicon">
+<title>CineList - Cadastro</title>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<p class="create-account">Criar conta</p>
+			<form method="POST" th:action="@{/sign-up}" th:object="${user}"
+				class="form">
+				<div class="mb-3">
+					<label for="email-input" class="form-label" id="create-account"><span
+						class="instruction">Seu email</span></label> <input
+						placeholder="*nome@example.com" type="email" class="form-control"
+						id="email-input" name="email" th:value="${user.email}">
+				</div>
+				<div class="mb-3">
+					<label for="username-input" class="form-label"><span
+						class="instruction">Usuário</span></label> <input
+						placeholder="*Seu nome de usuário" type="text" class="form-control"
+						id="username-input" aria-describedby="emailHelp" name="username"
+						th:value="${user.username}">
+				</div>
+				<div class="mb-3">
+					<label for="password-input" class="form-label"><span
+						class="instruction">Senha</span></label> <input placeholder="*Sua senha"
+						type="password" class="form-control" id="password-input"
+						name="password" th:value="${user.password}">
+				</div>
+				<div class="mb-3">
+					<label for="password-input" class="form-label"><span
+						class="instruction">Repita a senha</span></label> <input placeholder="*Sua a senha"
+						type="password" class="form-control" id="password-input"
+						name="password" th:value="${user.repeatedPassword}">
+				</div>
+				<p class="sign-in-redirect">
+					Já é cadastrado? <a th:href="@{/sign-in}">Entrar</a>
+				</p>
+				<button type="submit" class="btn btn-primary">Cadastrar</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

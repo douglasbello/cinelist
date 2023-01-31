@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="imgs/favicon.png" th:fragment="favicon">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/3a4b238bfb.js"></script>
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/index.css">
+<title>Index</title>
+</head>
+<body>
+
+	<header class="main" style="background-color: #a3d2d7;"
+		th:fragment="header">
+		<a alt="Logo do site" th:href="@{/}" style="margin-left: 30px;"><img
+			style="width: 100px; height: 100px; filter: invert(20%);"
+			src="imgs/logo_thumbnail.png"></a>
+		<ul class="nav">
+			<li class="nav-item"><a class="nav-link" th:href="@{/}"><i
+					class="fa fa-home"></i>Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Favoritos</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Assistidos</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Sua lista
+					para assistir</a></li>
+			<li class="nav-item dropdown">
+				<button class="btn btn-dark dropdown-toggle"
+					data-bs-toggle="dropdown" aria-expanded="false">
+					<i class="fa fa-user"></i> Conta
+				</button>
+				<ul class="dropdown-menu dropdown-menu-dark">
+					<li><a class="dropdown-item" href="#">Configurações</a></li>
+					<li><a class="dropdown-item" href="#">Another action</a></li>
+					<li><a class="dropdown-item" href="#">Sair</a></li>
+				</ul>
+			</li>
+
+		</ul>
+
+	</header>
+
+
+	<script src="/webjars/query/3.5.1/jquery.min.js"></script>
+
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
