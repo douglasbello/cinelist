@@ -18,31 +18,36 @@
 		<div class="box">
 			<p class="create-account">Criar conta</p>
 			<form method="POST" th:action="@{/sign-up}" th:object="${user}"
-				class="form">
+				class="form" autocomplete="off">
+
 				<div class="mb-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}">
+						<label class="validation-message" th:errors="*{email}"></label>
+					</div>
 					<label for="email-input" class="form-label" id="create-account"><span
 						class="instruction">Seu email</span></label> <input
 						placeholder="*nome@example.com" type="email" class="form-control"
 						id="email-input" name="email" th:value="${user.email}">
 				</div>
 				<div class="mb-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('username')}">
+						<label class="validation-message" th:errors="*{username}"></label>
+					</div>
 					<label for="username-input" class="form-label"><span
 						class="instruction">Usuário</span></label> <input
 						placeholder="*Seu nome de usuário" type="text" class="form-control"
 						id="username-input" aria-describedby="emailHelp" name="username"
 						th:value="${user.username}">
 				</div>
+
 				<div class="mb-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('password')}">
+						<label class="validation-message" th:errors="*{password}"></label>
+					</div>
 					<label for="password-input" class="form-label"><span
 						class="instruction">Senha</span></label> <input placeholder="*Sua senha"
 						type="password" class="form-control" id="password-input"
 						name="password" th:value="${user.password}">
-				</div>
-				<div class="mb-3">
-					<label for="password-input" class="form-label"><span
-						class="instruction">Repita a senha</span></label> <input placeholder="*Sua a senha"
-						type="password" class="form-control" id="password-input"
-						name="password" th:value="${user.repeatedPassword}">
 				</div>
 				<p class="sign-in-redirect">
 					Já é cadastrado? <a th:href="@{/sign-in}">Entrar</a>

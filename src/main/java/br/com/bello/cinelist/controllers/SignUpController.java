@@ -1,38 +1,41 @@
 package br.com.bello.cinelist.controllers;
 
+import br.com.bello.cinelist.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bello.cinelist.entities.User;
-import br.com.bello.cinelist.repositories.UserRepository;
-import jakarta.validation.Valid;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Controller
+@RestController
+@RequestMapping(value = "/sign-up")
 public class SignUpController {
-	
+
 	@Autowired
-    private UserRepository repository;
-	
-	
-	@GetMapping("/sign-up")
+    private UserService userService;
+
+	@GetMapping
 	public ModelAndView url() {
 	    ModelAndView mv = new ModelAndView("forms/create");
 	    mv.addObject("user", new User());
 	    return mv;
 	}
 
-	@PostMapping("/sign-up")
-	public String create(@Valid @ModelAttribute User obj) {
-		String email = obj.getEmail();
-		String username = obj.getUsername();
-		String password = obj.getPassword();
+	@PostMapping
+	public ModelAndView create(@Valid @ModelAttribute User obj, BindingResult br, RedirectAttributes redirAttrs) {
+		ModelAndView mv = new ModelAndView();
 
-		User entity = new User(null, email, username, password);
-		repository.save(entity);
-		return "redirect:/";
+		if (br.hasErrors()) {
+			mv.setViewName("forms/create");
+			mv.addObject("obj");
+		} else {
+			userService.insert(obj);
+			redirAttrs.addAttribute("id", obj.getId()).addFlashAttribute("message", "Account created!");
+			mv.setViewName("redirect:/users/{id}");
+		}
+		return mv;
 	}
 }

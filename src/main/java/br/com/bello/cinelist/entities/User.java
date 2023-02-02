@@ -17,7 +17,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-
+import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "tb_users")
 public class User implements Serializable {
@@ -30,16 +30,15 @@ public class User implements Serializable {
     
     @Column(name = "email", nullable = false, unique = true)
     @Email
-    @NotBlank(message = "Email não pode ficar em branco.")
+    @Size(min = 15, message = "O email precisa ter mais que 15 caracteres.")
     private String email;
-    @Column(nullable = false, unique = true)
-    @NotBlank(message = "Usuário não pode ficar em branco.")
+    @Column(name="username", nullable = false, unique = true)
+    @Size(min = 4, max = 18, message = "O usuário precisa ter no mínimo 4 caracteres." )
     private String username;
-    @Column(nullable = false)
-    @NotBlank(message = "Senha não pode ficar em branco.") 
+    @Column(name="password", nullable = false)
+    @Size(min = 8, max = 150, message = "A senha precisa ter no minímo 8 caracteres.")
     private String password;
-    @NotBlank(message = "Email não pode ficar em branco.")
-    private String repeatedPassword;
+
     private String pfpUrl;
     
     @ManyToMany
@@ -105,10 +104,6 @@ public class User implements Serializable {
 
     public void setPfpUrl(String pfpUrl) {
         this.pfpUrl = pfpUrl;
-    }
-    
-    public String getRepeatedPassword() {
-    	return repeatedPassword;
     }
 
     public Set<Movie> getFavoriteMovies() {

@@ -26,13 +26,19 @@
 	<div class="container">
 	        <div class="box">
 	            <p class="login">Entrar na CineList</p>
-	            <form method="POST" th:action="@{/login}" th:object="${user}" class="form">
+	            <form method="POST" th:action="@{/sign-in}" th:object="${user}" class="form">
 	                <div class="mb-3">
+						<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('username')}">
+							<label class="validation-message" th:errors="*{username}"></label>
+						</div>
 	                    <label for="username-input" class="form-label"><span class="instruction">Seu email</span></label>
-	                    <input placeholder="nome@example.com" type="text" class="form-control" id="username-input"
-	                            name="username" th:value="${user.email}">
+	                    <input placeholder="Seu nome de usuário" type="text" class="form-control" id="username-input"
+	                            name="username" th:value="${user.username}">
 	                </div>
 	                <div class="mb-3">
+						<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('password')}">
+							<label class="validation-message" th:errors="*{password}"></label>
+						</div>
 	                    <label for="password-input" class="form-label"><span class="instruction">Sua senha</span></label>
 	                    <input placeholder="Sua senha" type="password" class="form-control" id="password-input"
 	                           name="password" th:value="${user.password}">

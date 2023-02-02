@@ -46,8 +46,6 @@ public class TestConfig implements CommandLineRunner {
 		user2.getFavoriteMovies().add(mov2);
 		user2.getFavoriteMovies().add(mov1);
 
-		
-		
 		userRepository.saveAll(Arrays.asList(user1,user2));
 		
 		
