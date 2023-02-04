@@ -1,6 +1,7 @@
 package br.com.bello.cinelist.controllers;
 
 import br.com.bello.cinelist.services.UserService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,11 @@ import br.com.bello.cinelist.entities.User;
 @Controller
 public class LoginController {
 
-	@Autowired
-	private UserService service;
+	private final UserService service;
+
+	public LoginController(UserService service) {
+		this.service = service;
+	}
 
 	@GetMapping("/sign-in")
 	public ModelAndView url() {
@@ -28,15 +32,19 @@ public class LoginController {
 	}
 
 	@PostMapping("/sign-in")
-	public ModelAndView loginValidation(@Valid @RequestBody User user, BindingResult br) {
+	public ModelAndView loginValidation(@Valid User user, BindingResult br, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		String password = user.getPassword();
 		String username = user.getUsername();
-		if (!service.loginValidation(username,password) || br.hasErrors()) {
+		if (br.hasErrors()) {
 			mv.setViewName("forms/login");
-			mv.addObject(user);
+		}
+		else if (!service.loginValidation(username,password)) {
+			mv.addObject("msg","Usuário ou senha não encontrados.");
+			mv.addObject("user",user);
 		} else {
-
+			session.setAttribute("loggedUser",user);
+			mv.setViewName("redirect:/home");
 		}
 		return mv;
 	}

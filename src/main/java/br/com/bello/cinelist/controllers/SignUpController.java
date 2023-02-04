@@ -14,8 +14,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping(value = "/sign-up")
 public class SignUpController {
 
-	@Autowired
-    private UserService userService;
+	private final UserService userService;
+
+	public SignUpController(UserService userService) {
+		this.userService = userService;
+	}
 
 	@GetMapping
 	public ModelAndView url() {
