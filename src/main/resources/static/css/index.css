@@ -1,42 +1,42 @@
 * {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 .nav {
-	float: right;
+    float: right;
 }
 
 .btn-danger {
-	font-size: 18px;
-	padding: 0px 20px;
+    font-size: 18px;
+    padding: 0px 20px;
 }
 
 .nav-link {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 .nav-item {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .nav-link:hover {
-	transition: 0.4s;
-	color: rgb(243, 67, 3);
+    transition: 0.4s;
+    color: rgb(243, 67, 3);
 }
 
 .nav-link a {
-	cursor: pointer;
-	font-weight: bold;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .nav {
-	margin-top: 30px;
-	padding-right: 20px;
+    margin-top: 30px;
+    padding-right: 20px;
 }
 
 .dropdown-toggle {
-	background-color: #0d6efd;
-	margin-left: 10px;
+    background-color: #0d6efd;
+    margin-left: 10px;
 }
