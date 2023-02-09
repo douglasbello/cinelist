@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+main {
+    width: 1600px;
+    height: 800px;
+    background-image: url('interstellar-gargantua-u4-1600x900.jpg');
+}
+.logo {
+    margin-left: 10px;
+    float: left;
+}
+#logo {
+    margin-top: 0;
+    margin-left: 20px;
+    width: 100px;
+    height: 100px;
+}
+.logo {
+    float: left;
+    display: inline-block;
+    margin-right: 40px;
+}
+.item-left {
+    margin-top: 15px;
+    font-size: 20px;
+    padding: 15px 23px;
+    list-style-type: none;
+    display: inline-block;
+}
+.menu {
+    float: right;
+}
+.div-menu-left {
+    float: left;
+    margin-top: 15px;
+}
+.menu-left {
+    color: #14a7e7;
+}
+.menu-left:hover {
+    transition: 0.4s;
+    color: rgb(243, 67, 3);
+}
+.btn-dark {
+    background-color: #ddd;
+    color: #343a40;
+}
+.btn-danger {
+    background-color: #343a40;
+}
+.fa {
+    color: #14a7e7;
+}
+.account {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 4px;
+}
+.fa {
+    font-weight: normal;
+}
+.fa-user {
+    font-weight: bold;
+}
+.div-menu-right {
+    float: right;
+}
+.item {
+    margin-top: 30px;
+    font-size: 20px;
+    padding: 15px 23px;
+    list-style-type: none;
+    display: inline-block;
+}
+/* ---------Fim do header e início do main------------------
+*/
+.text-one {
+    display: block;
+}
+section {
+    width: 100vw;
+    height: 87vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 1400px;
+    height: 600px;
+    text-align: center;
+}
+.hero {
+    font-size: 50px;
+    margin-bottom: 20px;
+    margin-top: 9%;
+    color: #14a7e7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+.about {
+    color: #14a7e7;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 250px;
+}
+.section-um-btn {
+    margin-top: 30px;
+    margin-left: 55px;
+}
+.section-um-btn a {
+    color: #14a7e7;
+    margin: 0 40px;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 15px 35px;
+    border: 3px solid #ddd;
+}
+.section-um-btn a:hover {
+    transition: 0.4s;
+    color: #ddd;
+    background-color: rgb(243, 67, 3);
+}
+.links {
+    margin-top: 70px;
+    display: inline-block;
+}

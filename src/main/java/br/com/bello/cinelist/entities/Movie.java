@@ -1,23 +1,18 @@
 package br.com.bello.cinelist.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-import jakarta.persistence.Column;
+import java.util.Date;
+import java.util.HashSet;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "movies")
+@Entity(name = "tb_movie")
 public class Movie implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -31,10 +26,9 @@ public class Movie implements Serializable {
     private Date releaseDate;
     private String imgUrl;
     private String genre;
-    @Column(nullable = true)
-    private String userComment;
-//    @ManyToMany
-//    private Set<User> users = new HashSet<>();
+    @ManyToMany
+    private Set<User> users = new HashSet<>();
+
 
     public Movie(){}
 
@@ -86,6 +80,7 @@ public class Movie implements Serializable {
         this.genre = genre;
     }
 
-
-
+    public Set<User> getUsers() {
+        return users;
+    }
 }

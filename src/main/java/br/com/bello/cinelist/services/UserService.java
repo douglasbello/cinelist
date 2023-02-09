@@ -3,8 +3,6 @@ package br.com.bello.cinelist.services;
 import br.com.bello.cinelist.entities.User;
 import br.com.bello.cinelist.repositories.UserRepository;
 import br.com.bello.cinelist.repositories.exceptions.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

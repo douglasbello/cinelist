@@ -10,10 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
-	@GetMapping("/home")
+	@GetMapping("/")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home/index");
+		mv.setViewName("home/home");
 		mv.addObject("user",new User());
 		return mv;
 	}

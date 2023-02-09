@@ -17,11 +17,15 @@ import br.com.bello.cinelist.repositories.UserRepository;
 @Profile("test")
 public class TestConfig implements CommandLineRunner {
 	
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 	
-	@Autowired
-	private MovieRepository movieRepository;
+
+	private final MovieRepository movieRepository;
+
+	public TestConfig(UserRepository userRepository, MovieRepository movieRepository) {
+		this.userRepository = userRepository;
+		this.movieRepository = movieRepository;
+	}
 		
 	@Override
 	public void run(String... args) throws Exception {
@@ -47,7 +51,6 @@ public class TestConfig implements CommandLineRunner {
 		user2.getFavoriteMovies().add(mov1);
 
 		userRepository.saveAll(Arrays.asList(user1,user2));
-		
-		
+
 	}
 }

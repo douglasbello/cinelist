@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE-edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="imgs/favicon.png" th:fragment="favicon">
+<link rel="icon" type="image/x-icon" href="../../static/imgs/favicon.png" th:fragment="favicon">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -19,16 +19,16 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="../../static/css/index.css">
 <title>Index</title>
 </head>
 <body>
 
 	<header class="main" style="background-color: #a3d2d7;"
 		th:fragment="header">
-		<a alt="Logo do site" th:href="@{/}" style="margin-left: 30px;"><img
-			style="width: 100px; height: 100px; filter: invert(20%);"
-			src="../../static/imgs/logo_thumbnail.png"></a>
+		<a th:href="@{/}" style="margin-left: 30px;"><img
+				style="width: 100px; height: 100px; filter: invert(20%);"
+				src="../../static/imgs/logo_thumbnail.png" alt="Logo do site."></a>
 		<ul class="nav">
 			<li class="nav-item"><a class="nav-link" th:href="@{/}"><i
 					class="fa fa-home"></i>Home</a></li>
@@ -43,20 +43,14 @@
 				</button>
 				<ul class="dropdown-menu dropdown-menu-dark">
 					<li><a class="dropdown-item" href="#">Configurações</a></li>
-					<li><form action="/logout" method="post">
-						<button class="dropdown-item">Sair</button></form></li>
+					<li>
+						<form action="/logout" method="post">
+							<button type="button" class="btn btn-danger">Danger</button>
+						</form>
 				</ul>
 			</li>
-
 		</ul>
-
 	</header>
-
-
 	<script src="/webjars/query/3.5.1/jquery.min.js"></script>
-
-	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-
-
 </body>
 </html>
