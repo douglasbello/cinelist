@@ -3,6 +3,7 @@ package br.com.bello.cinelist.Test;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
+import br.com.bello.cinelist.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -22,9 +23,12 @@ public class TestConfig implements CommandLineRunner {
 
 	private final MovieRepository movieRepository;
 
-	public TestConfig(UserRepository userRepository, MovieRepository movieRepository) {
+	private final UserService userService;
+
+	public TestConfig(UserRepository userRepository, MovieRepository movieRepository, UserService userService) {
 		this.userRepository = userRepository;
 		this.movieRepository = movieRepository;
+		this.userService = userService;
 	}
 		
 	@Override
@@ -39,18 +43,18 @@ public class TestConfig implements CommandLineRunner {
 		
 		movieRepository.saveAll(Arrays.asList(mov1,mov2));
 		
-		User user1 = new User(null,"douglas@hotmail.com","douglas","douglas123");
-		User user2 = new User(null,"rafael@hotmail.com","rafael","rafael123");
+		User user1 = new User(null,"douglas@hotmail.com","douglas123","douglas123");
+		User user2 = new User(null,"rafael@hotmail.com","rafael123","rafael123");
 
 		
-		userRepository.saveAll(Arrays.asList(user1,user2));
+		userService.saveAll(Arrays.asList(user1,user2));
 		
 		user1.getFavoriteMovies().add(mov1);
 		user1.getFavoriteMovies().add(mov2);
 		user2.getFavoriteMovies().add(mov2);
 		user2.getFavoriteMovies().add(mov1);
 
-		userRepository.saveAll(Arrays.asList(user1,user2));
+		userService.saveAll(Arrays.asList(user1,user2));
 
 	}
 }

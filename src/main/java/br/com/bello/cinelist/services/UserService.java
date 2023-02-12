@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -34,10 +35,22 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public User insert(User obj) {
         String encoder = passwordEncoder.encode(obj.getPassword());
         obj.setPassword(encoder);
         return userRepository.save(obj);
+    }
+
+    public void saveAll(List<User> list) {
+        for (User obj : list) {
+            String encoder = passwordEncoder.encode(obj.getPassword());
+            obj.setPassword(encoder);
+        }
+        userRepository.saveAll(list);
     }
 
     public boolean loginValidation(String username, String password) {
@@ -45,8 +58,11 @@ public class UserService {
         obj.setUsername(username);
         obj.setPassword(password);
         User bd = findByUsername(username);
+        if (bd == null) {
+            return false;
+        }
         if (!obj.getUsername().equals(bd.getUsername())) {
-            throw new ResourceNotFoundException("Usuário ou senha incorretos.");
+            return false;
         }
         return passwordEncoder.matches(obj.getPassword(), bd.getPassword());
     }

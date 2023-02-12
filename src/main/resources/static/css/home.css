@@ -57,7 +57,11 @@ main {
 }
 .account {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-left: 4px;
+    padding-left: 5px;
+}
+.account:hover {
+    transition: 0.4s;
+    color: rgb(243, 67, 3);
 }
 .fa {
     font-weight: normal;

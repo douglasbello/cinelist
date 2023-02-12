@@ -36,8 +36,9 @@ public class LoginController {
 			mv.setViewName("forms/login");
 		}
 		else if (!service.loginValidation(username,password)) {
-			mv.addObject("msg","Usuário ou senha não encontrados.");
-			mv.addObject("user",user);
+			mv.addObject("error","Usuário ou senha não encontrados.");
+			mv.setViewName("forms/login");
+//			mv.addObject("user",user);
 		} else {
 			session.setAttribute("loggedUser",user);
 			mv.setViewName("redirect:/home");

@@ -2,11 +2,9 @@ package br.com.bello.cinelist.controllers;
 
 import br.com.bello.cinelist.entities.User;
 import br.com.bello.cinelist.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,6 +25,12 @@ public class UserController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
         User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping(value = "/username={username}")
+    public ResponseEntity<User> findByUsername(@PathVariable String username) {
+        User obj = service.findByUsername(username);
         return ResponseEntity.ok().body(obj);
     }
 

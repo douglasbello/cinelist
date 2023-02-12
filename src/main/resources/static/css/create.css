@@ -68,3 +68,9 @@ body {
     width: 400px;
     height: 40px;
 }
+.alert-sucess {
+    margin-left: 0;
+    padding-top: 5px;
+    width: 400px;
+    height: 40px;
+}

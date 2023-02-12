@@ -27,8 +27,11 @@
 	        <div class="box">
 	            <p class="login">Entrar na CineList</p>
 	            <form method="POST" th:action="@{/sign-in}" th:object="${user}" class="form">
-					<div class="alert alert-danger" role="alert" th:if="${msg}">
-						<strong th:text="${msg}"></strong>
+					<div class="alert alert-danger" role="alert" th:if="${error}" style="margin-left: 40px">
+						<strong th:text="${error}"></strong>
+					</div>
+					<div th:if="${successMessage}">
+						<p th:text="${successMessage}"></p>
 					</div>
 	                <div class="mb-3">
 						<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('username')}">
