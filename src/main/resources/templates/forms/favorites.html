@@ -14,11 +14,27 @@
 </head>
 <body>
 
-  <div th:if="${session.loggedUser}">
-    <p>User name: <span th:text="${session.loggedUser.username}"></span></p>
-    <p>User name: <span th:text="${session.isEmpty()}"></span></p>
+<!--  <div th:if="${movie}">-->
+<!--    <p>User name: <span th:text="${movie.getId()}"></span></p>-->
+<!--    <p>Senha: <span th:text="${session.loggedUser.getPassword()}"></span></p>-->
+<!--    <p>User name: <span th:text="${session.isEmpty()}"></span></p>-->
 
-  </div>
+<!--  </div>-->
+
+  <table>
+    <thead>
+    <tr>
+      <th>Resultado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="result : ${movie}">
+        <td th:text="${result.getTitle()}"></td>
+        <td th:text="${result.getOverview()}"></td>
+    </tr>
+    </tbody>
+  </table>
+
 
 </body>
 </html>

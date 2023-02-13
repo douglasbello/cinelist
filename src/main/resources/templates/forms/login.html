@@ -30,9 +30,7 @@
 					<div class="alert alert-danger" role="alert" th:if="${error}" style="margin-left: 40px">
 						<strong th:text="${error}"></strong>
 					</div>
-					<div th:if="${successMessage}">
-						<p th:text="${successMessage}"></p>
-					</div>
+
 	                <div class="mb-3">
 						<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('username')}">
 							<label class="validation-message" th:errors="*{username}"></label>

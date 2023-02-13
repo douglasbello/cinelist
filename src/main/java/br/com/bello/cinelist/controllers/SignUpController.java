@@ -1,6 +1,7 @@
 package br.com.bello.cinelist.controllers;
 
 import br.com.bello.cinelist.services.UserService;
+import br.com.bello.cinelist.utils.Smtp;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -8,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bello.cinelist.entities.User;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Random;
 
 @Controller
 public class SignUpController {
@@ -27,7 +29,7 @@ public class SignUpController {
 	}
 
 	@PostMapping(value = "/sign-up")
-	public ModelAndView create(@Valid @ModelAttribute User obj, BindingResult br,RedirectAttributes redirectAttributes) {
+	public ModelAndView create(@Valid @ModelAttribute User obj, BindingResult br) {
 		ModelAndView mv = new ModelAndView();
 		User usernameVerification = userService.findByUsername(obj.getUsername());
 		User emailVerification = userService.findByEmail(obj.getEmail());
@@ -42,10 +44,16 @@ public class SignUpController {
 			mv.setViewName("forms/create");
 		}
 		else {
-			userService.insert(obj);
-			mv.addObject("sucess","Conta criada com sucesso.");
-			mv.addObject("newUser",new User());
-			mv.setViewName("forms/create");
+			Random rd = new Random();
+			StringBuilder stringBuilder = new StringBuilder();
+			for (int i = 0; i < 6; i++) {
+				stringBuilder.append(rd.nextInt(10));
+			}
+			String code = stringBuilder.toString();
+			userService.sendEmail(obj.getEmail(),code);
+			mv.addObject("emailVerification");
+			mv.setViewName("forms/email-verification");
+
 		}
 		return mv;
 	}

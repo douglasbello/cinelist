@@ -3,6 +3,8 @@ package br.com.bello.cinelist.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import java.util.HashSet;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,8 +12,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity(name = "tb_movie")
 public class Movie implements Serializable {
     @Serial
@@ -21,9 +25,9 @@ public class Movie implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String description;
+    private String overview;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private Date releaseDate;
+    private Date release_date;
     private String imgUrl;
     private String genre;
     @ManyToMany
@@ -32,11 +36,11 @@ public class Movie implements Serializable {
 
     public Movie(){}
 
-    public Movie(Long id,String title, String description, Date releaseDate, String imgUrl) {
+    public Movie(Long id,String title, String overview, Date release_date, String imgUrl) {
     	this.id = id;
         this.title = title;
-        this.description = description;
-        this.releaseDate = releaseDate;
+        this.overview = overview;
+        this.release_date = release_date;
         this.imgUrl = imgUrl;
     }
 
@@ -48,20 +52,20 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOverview() {
+        return overview;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
-    public Date getReleaseDate() {
-        return releaseDate;
+    public Date getRelease_date() {
+        return release_date;
     }
 
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setRelease_date(Date release_date) {
+        this.release_date = release_date;
     }
 
     public String getImgUrl() {
@@ -80,7 +84,37 @@ public class Movie implements Serializable {
         this.genre = genre;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Set<User> getUsers() {
         return users;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return id.equals(movie.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", overview='" + overview + '\'' +
+                ", release_date=" + release_date +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", genre='" + genre + '\'' +
+                ", users=" + users +
+                '}';
     }
 }

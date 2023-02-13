@@ -20,8 +20,8 @@
 			<form method="POST" th:action="@{/sign-up}" th:object="${user}"
 				class="form" autocomplete="off">
 
-				<div class="alert alert-success" role="alert" th:if="${sucessMessage}" style="margin-left: 40px">
-					<strong th:text="${sucessMessage}"><a th:href="@{/sign-in}">Ir para página de login</a></strong>
+				<div class="alert alert-success" role="alert" th:if="${sucess}" style="margin-left: 40px">
+					<strong th:text="${sucess}"><a th:href="@{/sign-in}">Ir para página de login</a></strong>
 				</div>
 
 				<div class="alert alert-danger" role="alert" th:if="${usernameError}" style="margin-left: 40px">

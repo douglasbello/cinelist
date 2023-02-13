@@ -30,15 +30,12 @@ public class LoginController {
 	@PostMapping("/sign-in")
 	public ModelAndView loginValidation(@Valid User user, BindingResult br, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		String password = user.getPassword();
-		String username = user.getUsername();
 		if (br.hasErrors()) {
 			mv.setViewName("forms/login");
 		}
-		else if (!service.loginValidation(username,password)) {
+		else if (!service.loginValidation(user.getUsername(),user.getPassword())) {
 			mv.addObject("error","Usuário ou senha não encontrados.");
 			mv.setViewName("forms/login");
-//			mv.addObject("user",user);
 		} else {
 			session.setAttribute("loggedUser",user);
 			mv.setViewName("redirect:/home");

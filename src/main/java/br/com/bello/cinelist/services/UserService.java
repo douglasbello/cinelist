@@ -3,13 +3,14 @@ package br.com.bello.cinelist.services;
 import br.com.bello.cinelist.entities.User;
 import br.com.bello.cinelist.repositories.UserRepository;
 import br.com.bello.cinelist.repositories.exceptions.ResourceNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -18,8 +19,12 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public UserService(UserRepository userRepository) {
+    private final EmailService emailService;
+
+
+    public UserService(UserRepository userRepository, EmailService emailService) {
         this.userRepository = userRepository;
+        this.emailService = emailService;
     }
 
     public List<User> findAll() {
@@ -65,5 +70,9 @@ public class UserService {
             return false;
         }
         return passwordEncoder.matches(obj.getPassword(), bd.getPassword());
+    }
+
+    public boolean sendEmail(String email, String code) {
+        return emailService.sendEmail(email,"Confirmação do endereço de email.","O seu código para confirmação do email é: " + code);
     }
 }
