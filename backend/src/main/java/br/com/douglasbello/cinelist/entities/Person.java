@@ -1,5 +1,8 @@
 package br.com.douglasbello.cinelist.entities;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 import java.time.LocalDate;
@@ -8,7 +11,9 @@ import java.util.UUID;
 
 @MappedSuperclass
 public abstract class Person {
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
@@ -23,11 +28,11 @@ public abstract class Person {
         this.gender = gender;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

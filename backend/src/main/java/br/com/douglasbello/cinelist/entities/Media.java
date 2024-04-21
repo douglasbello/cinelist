@@ -11,35 +11,31 @@ import java.util.Objects;
 @MappedSuperclass
 public abstract class Media {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
     private String title;
     private String shortDescription;
     private String longDescription;
     @ElementCollection
     private List<Language> languages;
-    private Director director;
-    private List<Actor> actors;
-    private List<Screenwriter> screenwriters;
     private LocalDate releaseDate;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     public Media() {}
 
-    public Media(String shortDescription, String title, String longDescription, Director director, LocalDate releaseDate) {
+    public Media(String shortDescription, String title, String longDescription, LocalDate releaseDate) {
         this.shortDescription = shortDescription;
         this.title = title;
         this.longDescription = longDescription;
-        this.director = director;
         this.releaseDate = releaseDate;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -65,14 +61,6 @@ public abstract class Media {
 
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
-    }
-
-    public Director getDirector() {
-        return director;
-    }
-
-    public void setDirector(Director director) {
-        this.director = director;
     }
 
     public LocalDate getReleaseDate() {
@@ -107,22 +95,6 @@ public abstract class Media {
         this.languages = languages;
     }
 
-    public List<Actor> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<Actor> actors) {
-        this.actors = actors;
-    }
-
-    public List<Screenwriter> getScreenwriters() {
-        return screenwriters;
-    }
-
-    public void setScreenwriters(List<Screenwriter> screenwriters) {
-        this.screenwriters = screenwriters;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -144,9 +116,6 @@ public abstract class Media {
                 ", shortDescription='" + shortDescription + '\'' +
                 ", longDescription='" + longDescription + '\'' +
                 ", languages=" + languages +
-                ", director=" + director +
-                ", actors=" + actors +
-                ", screenwriters=" + screenwriters +
                 ", releaseDate=" + releaseDate +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
