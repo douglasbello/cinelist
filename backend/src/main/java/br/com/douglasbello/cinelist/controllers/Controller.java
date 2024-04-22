@@ -1,6 +1,6 @@
 package br.com.douglasbello.cinelist.controllers;
 
-import br.com.douglasbello.cinelist.RequestResponseDTO;
+import br.com.douglasbello.cinelist.dtos.RequestResponseDTO;
 import br.com.douglasbello.cinelist.services.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

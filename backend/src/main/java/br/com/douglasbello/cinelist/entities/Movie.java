@@ -31,6 +31,14 @@ public class Movie extends Media {
             inverseJoinColumns = @JoinColumn(name = "platform_id")
     )
     private List<Platform> platforms = new ArrayList<>();
+    @ManyToMany(mappedBy = "favoriteMovies")
+    private List<User> favoriteMoviesUsers = new ArrayList<>();
+    @ManyToMany(mappedBy = "watchMovies")
+    private List<User> watchMoviesUsers = new ArrayList<>();
+    @ManyToMany(mappedBy = "watchShows")
+    private List<User> watchShowsUsers = new ArrayList<>();
+    @ManyToMany(mappedBy = "favoriteShows")
+    private List<User> favoriteShowsUsers = new ArrayList<>();
 
     public Movie() {}
 
@@ -59,6 +67,50 @@ public class Movie extends Media {
         return platforms;
     }
 
+    public void setLanguages(List<Language> languages) {
+        this.languages = languages;
+    }
+
+    public void setCertificates(List<Certificate> certificates) {
+        this.certificates = certificates;
+    }
+
+    public void setPlatforms(List<Platform> platforms) {
+        this.platforms = platforms;
+    }
+
+    public List<User> getFavoriteMoviesUsers() {
+        return favoriteMoviesUsers;
+    }
+
+    public void setFavoriteMoviesUsers(List<User> favoriteMoviesUsers) {
+        this.favoriteMoviesUsers = favoriteMoviesUsers;
+    }
+
+    public List<User> getWatchMoviesUsers() {
+        return watchMoviesUsers;
+    }
+
+    public void setWatchMoviesUsers(List<User> watchMoviesUsers) {
+        this.watchMoviesUsers = watchMoviesUsers;
+    }
+
+    public List<User> getWatchShowsUsers() {
+        return watchShowsUsers;
+    }
+
+    public void setWatchShowsUsers(List<User> watchShowsUsers) {
+        this.watchShowsUsers = watchShowsUsers;
+    }
+
+    public List<User> getFavoriteShowsUsers() {
+        return favoriteShowsUsers;
+    }
+
+    public void setFavoriteShowsUsers(List<User> favoriteShowsUsers) {
+        this.favoriteShowsUsers = favoriteShowsUsers;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -66,6 +118,10 @@ public class Movie extends Media {
                 ", languages=" + languages +
                 ", certificates=" + certificates +
                 ", platforms=" + platforms +
+                ", favoriteMoviesUsers=" + favoriteMoviesUsers +
+                ", watchMoviesUsers=" + watchMoviesUsers +
+                ", watchShowsUsers=" + watchShowsUsers +
+                ", favoriteShowsUsers=" + favoriteShowsUsers +
                 "} " + super.toString();
     }
 }

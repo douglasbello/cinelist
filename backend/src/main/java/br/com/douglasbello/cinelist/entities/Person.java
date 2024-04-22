@@ -18,6 +18,7 @@ public abstract class Person {
     private LocalDate birthDate;
     @Enumerated(EnumType.STRING)
     private Gender gender;
+    private String photoUrl;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -28,6 +29,14 @@ public abstract class Person {
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.gender = gender;
+    }
+
+    public Person(String firstName, String lastName, LocalDate birthDate, Gender gender, String photoUrl) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.photoUrl = photoUrl;
     }
 
     public String getId() {
@@ -90,6 +99,14 @@ public abstract class Person {
         this.updatedAt = updatedAt;
     }
 
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -111,6 +128,7 @@ public abstract class Person {
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
                 ", gender=" + gender +
+                ", photoUrl='" + photoUrl + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
