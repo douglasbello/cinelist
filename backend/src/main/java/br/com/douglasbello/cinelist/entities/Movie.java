@@ -35,10 +35,6 @@ public class Movie extends Media {
     private List<User> favoriteMoviesUsers = new ArrayList<>();
     @ManyToMany(mappedBy = "watchMovies")
     private List<User> watchMoviesUsers = new ArrayList<>();
-    @ManyToMany(mappedBy = "watchShows")
-    private List<User> watchShowsUsers = new ArrayList<>();
-    @ManyToMany(mappedBy = "favoriteShows")
-    private List<User> favoriteShowsUsers = new ArrayList<>();
 
     public Movie() {}
 
@@ -95,21 +91,6 @@ public class Movie extends Media {
         this.watchMoviesUsers = watchMoviesUsers;
     }
 
-    public List<User> getWatchShowsUsers() {
-        return watchShowsUsers;
-    }
-
-    public void setWatchShowsUsers(List<User> watchShowsUsers) {
-        this.watchShowsUsers = watchShowsUsers;
-    }
-
-    public List<User> getFavoriteShowsUsers() {
-        return favoriteShowsUsers;
-    }
-
-    public void setFavoriteShowsUsers(List<User> favoriteShowsUsers) {
-        this.favoriteShowsUsers = favoriteShowsUsers;
-    }
 
     @Override
     public String toString() {
@@ -120,8 +101,6 @@ public class Movie extends Media {
                 ", platforms=" + platforms +
                 ", favoriteMoviesUsers=" + favoriteMoviesUsers +
                 ", watchMoviesUsers=" + watchMoviesUsers +
-                ", watchShowsUsers=" + watchShowsUsers +
-                ", favoriteShowsUsers=" + favoriteShowsUsers +
                 "} " + super.toString();
     }
 }

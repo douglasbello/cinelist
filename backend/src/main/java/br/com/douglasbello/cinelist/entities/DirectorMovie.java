@@ -11,15 +11,8 @@ import java.util.Objects;
 public class DirectorMovie {
     @EmbeddedId
     private DirectorMoviePK id = new DirectorMoviePK();
-    private String characterName;
-    private String roleDescription;
 
     public DirectorMovie() {}
-
-    public DirectorMovie(String characterName, String roleDescription) {
-        this.characterName = characterName;
-        this.roleDescription = roleDescription;
-    }
 
     @JsonIgnore
     public Movie getMovie() {
@@ -39,22 +32,6 @@ public class DirectorMovie {
         id.setDirector(director);
     }
 
-    public String getCharacterName() {
-        return characterName;
-    }
-
-    public void setCharacterName(String characterName) {
-        this.characterName = characterName;
-    }
-
-    public String getRoleDescription() {
-        return roleDescription;
-    }
-
-    public void setRoleDescription(String roleDescription) {
-        this.roleDescription = roleDescription;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,8 +49,6 @@ public class DirectorMovie {
     public String toString() {
         return "DirectorMovie{" +
                 "id=" + id +
-                ", characterName='" + characterName + '\'' +
-                ", roleDescription='" + roleDescription + '\'' +
                 '}';
     }
 }

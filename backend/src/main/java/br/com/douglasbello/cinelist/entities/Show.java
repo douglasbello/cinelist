@@ -31,6 +31,10 @@ public class Show extends Media {
             inverseJoinColumns = @JoinColumn(name = "platform_id")
     )
     private List<Platform> platforms = new ArrayList<>();
+    @ManyToMany(mappedBy = "watchShows")
+    private List<User> watchShowsUsers = new ArrayList<>();
+    @ManyToMany(mappedBy = "favoriteShows")
+    private List<User> favoriteShowsUsers = new ArrayList<>();
 
     public Show() {}
 
@@ -50,6 +54,14 @@ public class Show extends Media {
         return platforms;
     }
 
+    public List<User> getWatchShowsUsers() {
+        return watchShowsUsers;
+    }
+
+    public List<User> getFavoriteShowsUsers() {
+        return favoriteShowsUsers;
+    }
+
     @Override
     public String toString() {
         return "Show{" +
@@ -57,6 +69,8 @@ public class Show extends Media {
                 ", languages=" + languages +
                 ", certificates=" + certificates +
                 ", platforms=" + platforms +
+                ", watchShowsUsers=" + watchShowsUsers +
+                ", favoriteShowsUsers=" + favoriteShowsUsers +
                 "} " + super.toString();
     }
 }

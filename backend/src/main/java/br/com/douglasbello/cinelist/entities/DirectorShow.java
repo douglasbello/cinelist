@@ -13,15 +13,8 @@ import java.util.Objects;
 public class DirectorShow {
     @EmbeddedId
     private DirectorShowPK id = new DirectorShowPK();
-    private String characterName;
-    private String roleDescription;
 
     public DirectorShow() {}
-
-    public DirectorShow(String characterName, String roleDescription) {
-        this.characterName = characterName;
-        this.roleDescription = roleDescription;
-    }
 
     @JsonIgnore
     public Director getDirector() {
@@ -41,22 +34,6 @@ public class DirectorShow {
         id.setShow(show);
     }
 
-    public String getCharacterName() {
-        return characterName;
-    }
-
-    public void setCharacterName(String characterName) {
-        this.characterName = characterName;
-    }
-
-    public String getRoleDescription() {
-        return roleDescription;
-    }
-
-    public void setRoleDescription(String roleDescription) {
-        this.roleDescription = roleDescription;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,8 +51,6 @@ public class DirectorShow {
     public String toString() {
         return "DirectorShow{" +
                 "id=" + id +
-                ", characterName='" + characterName + '\'' +
-                ", roleDescription='" + roleDescription + '\'' +
                 '}';
     }
 }
