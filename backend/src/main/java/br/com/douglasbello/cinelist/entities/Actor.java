@@ -5,5 +5,5 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "artists")
-public class Artist extends Person {
+public class Actor extends Person {
 }

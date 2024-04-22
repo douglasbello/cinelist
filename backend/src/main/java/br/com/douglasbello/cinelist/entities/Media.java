@@ -1,11 +1,9 @@
 package br.com.douglasbello.cinelist.entities;
 
-import br.com.douglasbello.cinelist.entities.enums.Language;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 @MappedSuperclass
@@ -16,19 +14,21 @@ public abstract class Media {
     private String title;
     private String shortDescription;
     private String longDescription;
-    @ElementCollection
-    private List<Language> languages;
     private LocalDate releaseDate;
+    private String trailerUrl;
+    private String thumbnailUrl;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     public Media() {}
 
-    public Media(String shortDescription, String title, String longDescription, LocalDate releaseDate) {
+    public Media(String shortDescription, String title, String trailerUrl, String thumbnailUrl, String longDescription, LocalDate releaseDate) {
         this.shortDescription = shortDescription;
         this.title = title;
         this.longDescription = longDescription;
         this.releaseDate = releaseDate;
+        this.trailerUrl = trailerUrl;
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     public String getId() {
@@ -87,12 +87,20 @@ public abstract class Media {
         this.updatedAt = updatedAt;
     }
 
-    public List<Language> getLanguages() {
-        return languages;
+    public String getTrailerUrl() {
+        return trailerUrl;
     }
 
-    public void setLanguages(List<Language> languages) {
-        this.languages = languages;
+    public void setTrailerUrl(String trailerUrl) {
+        this.trailerUrl = trailerUrl;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     @Override
@@ -111,12 +119,13 @@ public abstract class Media {
     @Override
     public String toString() {
         return "Media{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", shortDescription='" + shortDescription + '\'' +
                 ", longDescription='" + longDescription + '\'' +
-                ", languages=" + languages +
                 ", releaseDate=" + releaseDate +
+                ", trailerUrl='" + trailerUrl + '\'' +
+                ", thumbnailUrl='" + thumbnailUrl + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
