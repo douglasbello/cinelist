@@ -1,8 +1,8 @@
 package br.com.douglasbello.cinelist.entities.enums;
 
 public enum Gender {
-    MALE("Female"),
-    FEMALE("Male");
+    MALE("Male"),
+    FEMALE("Female");
 
     private String value;
 

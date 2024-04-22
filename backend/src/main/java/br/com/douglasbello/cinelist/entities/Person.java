@@ -1,27 +1,29 @@
 package br.com.douglasbello.cinelist.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import br.com.douglasbello.cinelist.entities.enums.Gender;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
 @MappedSuperclass
 public abstract class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Person() {}
 
-    public Person(String firstName, String lastName, LocalDate birthDate, String gender) {
+    public Person(String firstName, String lastName, LocalDate birthDate, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -37,10 +39,10 @@ public abstract class Person {
     }
 
     public String getGender() {
-        return gender;
+        return gender.getValue();
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -72,6 +74,22 @@ public abstract class Person {
         return firstName + " " + lastName;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -88,11 +106,13 @@ public abstract class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
-                ", gender='" + gender + '\'' +
+                ", gender=" + gender +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
                 '}';
     }
 }
