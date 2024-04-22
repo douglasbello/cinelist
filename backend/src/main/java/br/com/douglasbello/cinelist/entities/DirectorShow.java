@@ -1,33 +1,26 @@
 package br.com.douglasbello.cinelist.entities;
 
-import br.com.douglasbello.cinelist.entities.pk.DirectorMoviePK;
+import br.com.douglasbello.cinelist.entities.pk.DirectorShowPK;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.util.Objects;
 
 @Entity
-@Table(name = "directors_movies")
-public class DirectorMovie {
+@Table(name = "directors_shows")
+public class DirectorShow {
     @EmbeddedId
-    private DirectorMoviePK id = new DirectorMoviePK();
+    private DirectorShowPK id = new DirectorShowPK();
     private String characterName;
     private String roleDescription;
 
-    public DirectorMovie() {}
+    public DirectorShow() {}
 
-    public DirectorMovie(String characterName, String roleDescription) {
+    public DirectorShow(String characterName, String roleDescription) {
         this.characterName = characterName;
         this.roleDescription = roleDescription;
-    }
-
-    @JsonIgnore
-    public Movie getMovie() {
-        return id.getMovie();
-    }
-
-    public void setMovie(Movie movie) {
-        id.setMovie(movie);
     }
 
     @JsonIgnore
@@ -37,6 +30,15 @@ public class DirectorMovie {
 
     public void setDirector(Director director) {
         id.setDirector(director);
+    }
+
+    @JsonIgnore
+    public Show getShow() {
+        return id.getShow();
+    }
+
+    public void setShow(Show show) {
+        id.setShow(show);
     }
 
     public String getCharacterName() {
@@ -59,7 +61,7 @@ public class DirectorMovie {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DirectorMovie that = (DirectorMovie) o;
+        DirectorShow that = (DirectorShow) o;
         return Objects.equals(id, that.id);
     }
 
@@ -70,7 +72,7 @@ public class DirectorMovie {
 
     @Override
     public String toString() {
-        return "DirectorMovie{" +
+        return "DirectorShow{" +
                 "id=" + id +
                 ", characterName='" + characterName + '\'' +
                 ", roleDescription='" + roleDescription + '\'' +
