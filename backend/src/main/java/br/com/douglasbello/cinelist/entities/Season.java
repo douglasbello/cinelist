@@ -2,6 +2,7 @@ package br.com.douglasbello.cinelist.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -16,6 +17,8 @@ public class Season {
     @ManyToOne
     @JoinColumn(name = "show_id")
     private Show show;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Season() {}
 
@@ -55,6 +58,22 @@ public class Season {
 
     public void setShow(Show show) {
         this.show = show;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override

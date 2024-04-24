@@ -35,6 +35,13 @@ public class Movie extends Media {
     private List<User> favoriteMoviesUsers = new ArrayList<>();
     @ManyToMany(mappedBy = "watchMovies")
     private List<User> watchMoviesUsers = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "movies_genres",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private List<Genres> genres = new ArrayList<>();
 
     public Movie() {}
 
@@ -91,6 +98,9 @@ public class Movie extends Media {
         this.watchMoviesUsers = watchMoviesUsers;
     }
 
+    public List<Genres> getGenres() {
+        return genres;
+    }
 
     @Override
     public String toString() {
@@ -101,6 +111,7 @@ public class Movie extends Media {
                 ", platforms=" + platforms +
                 ", favoriteMoviesUsers=" + favoriteMoviesUsers +
                 ", watchMoviesUsers=" + watchMoviesUsers +
+                ", genres=" + genres +
                 "} " + super.toString();
     }
 }

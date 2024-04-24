@@ -35,6 +35,13 @@ public class Show extends Media {
     private List<User> watchShowsUsers = new ArrayList<>();
     @ManyToMany(mappedBy = "favoriteShows")
     private List<User> favoriteShowsUsers = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "shows_genres",
+            joinColumns = @JoinColumn(name = "show_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private List<Genres> genres = new ArrayList<>();
 
     public Show() {}
 
@@ -62,6 +69,10 @@ public class Show extends Media {
         return favoriteShowsUsers;
     }
 
+    public List<Genres> getGenres() {
+        return genres;
+    }
+
     @Override
     public String toString() {
         return "Show{" +
@@ -71,6 +82,7 @@ public class Show extends Media {
                 ", platforms=" + platforms +
                 ", watchShowsUsers=" + watchShowsUsers +
                 ", favoriteShowsUsers=" + favoriteShowsUsers +
+                ", genres=" + genres +
                 "} " + super.toString();
     }
 }
