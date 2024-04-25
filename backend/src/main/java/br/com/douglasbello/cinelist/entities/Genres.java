@@ -2,6 +2,7 @@ package br.com.douglasbello.cinelist.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,8 @@ public class Genres {
     private List<Movie> movies = new ArrayList<>();
     @ManyToMany(mappedBy = "genres")
     private List<Show> shows = new ArrayList<>();
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Genres() {}
 
@@ -46,6 +49,22 @@ public class Genres {
 
     public List<Show> getShows() {
         return shows;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package br.com.douglasbello.cinelist.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -61,10 +62,12 @@ public class Show extends Media {
         return platforms;
     }
 
+    @JsonIgnore
     public List<User> getWatchShowsUsers() {
         return watchShowsUsers;
     }
 
+    @JsonIgnore
     public List<User> getFavoriteShowsUsers() {
         return favoriteShowsUsers;
     }

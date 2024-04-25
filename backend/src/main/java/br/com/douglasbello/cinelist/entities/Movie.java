@@ -1,5 +1,6 @@
 package br.com.douglasbello.cinelist.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -82,6 +83,7 @@ public class Movie extends Media {
         this.platforms = platforms;
     }
 
+    @JsonIgnore
     public List<User> getFavoriteMoviesUsers() {
         return favoriteMoviesUsers;
     }
@@ -90,6 +92,7 @@ public class Movie extends Media {
         this.favoriteMoviesUsers = favoriteMoviesUsers;
     }
 
+    @JsonIgnore
     public List<User> getWatchMoviesUsers() {
         return watchMoviesUsers;
     }

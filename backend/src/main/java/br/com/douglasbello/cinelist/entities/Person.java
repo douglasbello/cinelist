@@ -1,6 +1,7 @@
 package br.com.douglasbello.cinelist.entities;
 
 import br.com.douglasbello.cinelist.entities.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -79,6 +80,7 @@ public abstract class Person {
         this.firstName = firstName;
     }
 
+    @JsonIgnore
     public String getFullName() {
         return firstName + " " + lastName;
     }

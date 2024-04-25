@@ -1,6 +1,7 @@
 package br.com.douglasbello.cinelist.entities;
 
 import br.com.douglasbello.cinelist.entities.pk.ActorShowPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -20,6 +21,24 @@ public class ActorShow {
     public ActorShow(String characterName, String roleDescription) {
         this.characterName = characterName;
         this.roleDescription = roleDescription;
+    }
+
+    @JsonIgnore
+    public Actor getActor() {
+        return id.getActor();
+    }
+
+    public void setActor(Actor actor) {
+        this.id.setActor(actor);
+    }
+
+    @JsonIgnore
+    public Show getShow() {
+        return id.getShow();
+    }
+
+    public void setShow(Show show) {
+        this.id.setShow(show);
     }
 
     public ActorShowPK getId() {
