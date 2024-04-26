@@ -1,5 +1,6 @@
 package br.com.douglasbello.cinelist.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -52,6 +53,7 @@ public class Season {
         this.episodes = episodes;
     }
 
+    @JsonIgnore
     public Show getShow() {
         return show;
     }

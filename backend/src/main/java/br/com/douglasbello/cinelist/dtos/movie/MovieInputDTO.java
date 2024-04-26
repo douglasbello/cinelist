@@ -1,4 +1,4 @@
-package br.com.douglasbello.cinelist.dtos.movies;
+package br.com.douglasbello.cinelist.dtos.movie;
 
 import java.time.LocalDate;
 import java.util.List;

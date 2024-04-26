@@ -1,10 +1,8 @@
 package br.com.douglasbello.cinelist.controllers.impl;
 
-import br.com.douglasbello.cinelist.controllers.Controller;
 import br.com.douglasbello.cinelist.entities.Actor;
 import br.com.douglasbello.cinelist.entities.ActorMovie;
 import br.com.douglasbello.cinelist.entities.Movie;
-import br.com.douglasbello.cinelist.services.Service;
 import br.com.douglasbello.cinelist.services.impl.ActorMovieService;
 import br.com.douglasbello.cinelist.services.impl.ActorService;
 import br.com.douglasbello.cinelist.services.impl.MovieService;

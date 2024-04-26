@@ -3,6 +3,7 @@ package br.com.douglasbello.cinelist.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,10 @@ public class Show extends Media {
     private List<Genres> genres = new ArrayList<>();
 
     public Show() {}
+
+    public Show(String shortDescription, String title, String trailerUrl, String thumbnailUrl, String longDescription, LocalDate releaseDate) {
+        super(shortDescription, title, trailerUrl, thumbnailUrl, longDescription, releaseDate);
+    }
 
     public List<Season> getSeasons() {
         return seasons;

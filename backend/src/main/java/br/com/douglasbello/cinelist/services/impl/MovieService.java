@@ -1,6 +1,6 @@
 package br.com.douglasbello.cinelist.services.impl;
 
-import br.com.douglasbello.cinelist.dtos.movies.MovieInputDTO;
+import br.com.douglasbello.cinelist.dtos.movie.MovieInputDTO;
 import br.com.douglasbello.cinelist.entities.*;
 import br.com.douglasbello.cinelist.repositories.MovieRepository;
 import br.com.douglasbello.cinelist.utils.Mapper;
