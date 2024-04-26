@@ -30,6 +30,7 @@ public class ActorMovieController {
     public ResponseEntity<List<Actor>> addActorToMovie(@PathVariable String movieId, @PathVariable String actorId, @RequestBody ActorMovie actorMovie) {
         actorMovie.setActor(actorService.findById(actorId));
         actorMovie.setMovie(movieService.findById(movieId));
+
         return ResponseEntity.ok().body(actorMovieService.addActorToMovie(actorMovie));
     }
 

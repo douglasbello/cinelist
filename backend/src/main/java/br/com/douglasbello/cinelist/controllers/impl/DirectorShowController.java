@@ -32,7 +32,7 @@ public class DirectorShowController {
         return ResponseEntity.ok(directorShowService.addDirectorToShow(directorShow));
     }
 
-    @GetMapping("/shows/{showId}/actors")
+    @GetMapping("/shows/{showId}/directors")
     public ResponseEntity<List<Director>> getDirectorsOfShow(@PathVariable String showId) {
         return ResponseEntity.ok().body(directorShowService.getDirectorsOfShow(showId));
     }

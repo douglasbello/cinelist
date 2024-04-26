@@ -1,5 +1,6 @@
 package br.com.douglasbello.cinelist.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -16,6 +17,8 @@ public class Language {
     private String name;
     @ManyToMany(mappedBy = "languages")
     private List<Movie> movies = new ArrayList<>();
+    @ManyToMany(mappedBy = "languages")
+    private List<Show> shows = new ArrayList<>();
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -41,8 +44,14 @@ public class Language {
         this.name = name;
     }
 
+    @JsonIgnore
     public List<Movie> getMovies() {
         return movies;
+    }
+
+    @JsonIgnore
+    public List<Show> getShows() {
+        return shows;
     }
 
     public LocalDateTime getCreatedAt() {

@@ -1,5 +1,6 @@
 package br.com.douglasbello.cinelist.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -42,10 +43,12 @@ public class Certificate {
         this.age = age;
     }
 
+    @JsonIgnore
     public List<Movie> getMovies() {
         return movies;
     }
 
+    @JsonIgnore
     public List<Show> getShows() {
         return shows;
     }

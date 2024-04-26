@@ -33,7 +33,7 @@ public class DirectorMovieController {
         return ResponseEntity.ok().body(directorMovieService.addDirectorToMovie(directorMovie));
     }
 
-    @GetMapping("/movies/{movieId}/actors")
+    @GetMapping("/movies/{movieId}/directors")
     public ResponseEntity<List<Director>> getDirectorsOfMovie(@PathVariable String movieId) {
         return ResponseEntity.ok().body(directorMovieService.getDirectorsOfMovie(movieId));
     }

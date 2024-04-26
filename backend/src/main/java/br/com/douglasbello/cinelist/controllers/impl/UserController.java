@@ -5,11 +5,12 @@ import br.com.douglasbello.cinelist.entities.Movie;
 import br.com.douglasbello.cinelist.entities.Show;
 import br.com.douglasbello.cinelist.entities.User;
 import br.com.douglasbello.cinelist.services.Service;
-import br.com.douglasbello.cinelist.services.impl.MovieService;
 import br.com.douglasbello.cinelist.services.impl.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -24,6 +25,14 @@ public class UserController implements Controller<User> {
     @Override
     public Service<User> getService() {
         return userService;
+    }
+
+    @PostMapping
+    public ResponseEntity<User> insert(@RequestBody User user) {
+        user = userService.save(user);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(user);
     }
 
     @PostMapping("/favorite-movies/add/{movieId}/{userId}")
